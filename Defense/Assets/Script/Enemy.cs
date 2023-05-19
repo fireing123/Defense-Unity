@@ -5,17 +5,21 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public static int speed = 366;
-    public GameObject start;
-    public GameObject end;
-
+    public Transform[] load;
+    private int next = 2;
     private Vector3 Move;
-
+    private List<Vector3> positionList = new List<Vector3>();
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        var stratposition = GetPosition(start);
-        var endposition = GetPosition(end);
-        var Direction = GetDirection(stratposition, endposition);
+        var Lo = GameObject.Find("load");
+        load = Lo.GetComponentsInChildren<Transform>();
+        foreach (Transform t in load)
+        {
+
+            positionList.Add(t.position);
+        }
+        var Direction = GetDirection(positionList[next -1], positionList[next]);
         var MoveSpeed = GetMoveSpeed(Direction, speed);
         Move = MoveSpeed;
     }
@@ -24,13 +28,20 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(Move);
-        var myposition = GetPosition(gameObject);
-        var myendposition = GetPosition(end);
-        if (isArrived(GetIntVector(myposition), GetIntVector(myendposition))) Debug.Log("End!");
+        var myposition = GetPosition(gameObject.transform);
+        var myendposition = positionList[next];
+        if (isArrived(GetIntVector(myposition), GetIntVector(myendposition)))
+        {
+            gameObject.transform.position = positionList[next];
+            next += 1;
+            
+            var Direction = GetDirection(positionList[next-1], positionList[next]);
+            var MoveSpeed = GetMoveSpeed(Direction, speed);
+        }
     }
     
 
-    private Vector3 GetPosition(GameObject gameObject) => gameObject.transform.position;
+    private Vector3 GetPosition(Transform gameObject) => gameObject.position;
 
     private Vector3 GetDirection(Vector3 a, Vector3 b) => b - a;
 
@@ -42,3 +53,4 @@ public class Enemy : MonoBehaviour
 
     private bool isArrived(Vector3Int a, Vector3Int b) => a == b;
 }
+
