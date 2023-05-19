@@ -38,10 +38,9 @@ public class Enemy : MonoBehaviour
         var myendposition = positionList[next];
         if (isArrived(GetIntVector(myposition), GetIntVector(myendposition)))
         {
-            if (next == load.Length)
-                gameObject.transform.position = positionList[next];
+            if (next == load.Length) return;
+            gameObject.transform.position = positionList[next];
             next += 1;
-
             var Direction = GetDirection(positionList[next - 1], positionList[next]);
             var MoveSpeed = GetMoveSpeed(Direction, speed);
             Move = MoveSpeed;
