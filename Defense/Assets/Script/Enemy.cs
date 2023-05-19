@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public static int speed = 366;
     public Transform[] load;
-    private int next = 2;
+    public int next = 2;
     private Vector3 Move;
     private List<Vector3> positionList = new List<Vector3>();
     // Start is called before the first frame update
@@ -27,19 +27,26 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (load.Length == next) { Debug.Log("hello"); return; }
+        Moving();
+    }
+    
+    private void Moving()
+    {
         transform.Translate(Move);
         var myposition = GetPosition(gameObject.transform);
         var myendposition = positionList[next];
         if (isArrived(GetIntVector(myposition), GetIntVector(myendposition)))
         {
-            gameObject.transform.position = positionList[next];
+            if (next == load.Length)
+                gameObject.transform.position = positionList[next];
             next += 1;
-            
-            var Direction = GetDirection(positionList[next-1], positionList[next]);
+
+            var Direction = GetDirection(positionList[next - 1], positionList[next]);
             var MoveSpeed = GetMoveSpeed(Direction, speed);
+            Move = MoveSpeed;
         }
     }
-    
 
     private Vector3 GetPosition(Transform gameObject) => gameObject.position;
 
