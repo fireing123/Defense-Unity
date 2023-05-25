@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 144285991}
   - component: {fileID: 144285990}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04bf2ff53272dd64b91550dd3073582d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castleName: Enemy
-  castleType: End
+  castleName: MyC
+  castleType: Start
   castleMaxHp: 100
   castleNowHp: 100
   isCastleDistroy: 0
@@ -248,7 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 201016309}
   m_Layer: 0
-  m_Name: load
+  m_Name: Load
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -853,7 +853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1039647381}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: Unit.4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,7 +889,7 @@ GameObject:
   - component: {fileID: 1073428811}
   - component: {fileID: 1073428810}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -907,8 +907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660bf32234c33af498cb7633cb1026e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  load: []
-  next: 2
 --- !u!65 &1073428811
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -998,7 +996,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118535628}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Unit.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1030,7 +1028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1156360108}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: Unit.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1144,7 +1142,7 @@ GameObject:
   - component: {fileID: 1459932061}
   - component: {fileID: 1459932060}
   m_Layer: 0
-  m_Name: aLLY
+  m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1162,8 +1160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04bf2ff53272dd64b91550dd3073582d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castleName: MyCaslte
-  castleType: Start
+  castleName: EnemyC
+  castleType: End
   castleMaxHp: 100
   castleNowHp: 100
   isCastleDistroy: 0
@@ -1480,7 +1478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2000671608}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Unit.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
