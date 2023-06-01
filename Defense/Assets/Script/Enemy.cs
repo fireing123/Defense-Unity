@@ -19,18 +19,20 @@ public class Enemy : MonoBehaviour
         transform.Translate(nextDirection * speed);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("gfgf");
-    }
-
-
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("gg");
         if (other.tag != "load") return;
+        
         transform.position = other.transform.position;
-        nextDirection = - other.GetComponent<Load>().nodeDirection / 360;
+        Load load = other.GetComponent<Load>();
+        if (load.nextNode!=other.transform)
+        {
+            nextDirection = -load.nodeDirection / 360;
+        } else
+        {
+            Destroy(gameObject);
+            other.GetComponent<Castle>().HPDrmove(5);
+        }
     }
 
 }

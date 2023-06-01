@@ -9,14 +9,15 @@ public class Load : MonoBehaviour
 
     public Vector3 nodeDirection;
 
-    void Awake()
+    public virtual void Awake()
     {
+        if (gameObject.transform == nextNode) { nodeDirection = new Vector3(0, 0, 0); return; }
         gameObject.tag = "load";
         var Direction = transform.position - nextNode.position;
         nodeDirection = Direction / Vector3.Distance(transform.position , nextNode.position);
     }
 
-    void Update()
+    public virtual void Update()
     {
     }
 }

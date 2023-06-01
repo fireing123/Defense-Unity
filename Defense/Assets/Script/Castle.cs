@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Castle : MonoBehaviour
+public class Castle : Load
 {
     enum CastleType
     {
@@ -17,14 +17,19 @@ public class Castle : MonoBehaviour
     public int castleNowHp;
     public bool isCastleDistroy = false;
 
-    void Start()
+    public override void Awake()
     {
-        
+        base.Awake();
     }
 
     
-    void Update()
+    public override void Update()
     {
-        
+        base.Update();
+    }
+
+    public void HPDrmove(int hp)
+    {
+        castleNowHp -= hp;
     }
 }
