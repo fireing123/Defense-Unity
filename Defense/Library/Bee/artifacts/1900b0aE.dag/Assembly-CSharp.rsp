@@ -352,6 +352,7 @@
 "Assets/Script/EnemyCastle.cs"
 "Assets/Script/EnemyPrefabManager.cs"
 "Assets/Script/Load.cs"
+"Assets/Script/Types/EnemyTypes.cs"
 -langversion:9.0
 
 /deterministic

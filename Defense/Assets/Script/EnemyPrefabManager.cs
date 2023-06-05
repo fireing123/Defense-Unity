@@ -38,8 +38,7 @@ namespace Entity
 
             foreach (EnemyPrefabInfo enemyInfo in prefabData.enemies)
             {
-                GameObject prefab = Resources.Load<GameObject>(enemyInfo.prefabPath);
-
+                GameObject prefab = Resources.Load<GameObject>("Prefabs/Cube");
                 if (prefab != null)
                 {
                     enemyPrefabs.Add(enemyInfo.name, prefab);

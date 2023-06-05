@@ -620,7 +620,6 @@ GameObject:
   - component: {fileID: 1368423389}
   - component: {fileID: 1368423388}
   - component: {fileID: 1368423387}
-  - component: {fileID: 1368423390}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -688,26 +687,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1368423390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368423386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b39054e4e22df442b580d09a8dd9490, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextNode: {fileID: 0}
-  nodeDirection: {x: 0, y: 0, z: 0}
-  castleName: 
-  castleType: 
-  castleMaxHp: 0
-  castleNowHp: 0
-  isCastleDistroy: 0
-  world: {fileID: 0}
 --- !u!1 &1459932059
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,7 +814,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7339655566652397052, guid: e198ad80a69c9ea40be405b092203880, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Cube
       objectReference: {fileID: 0}
     - target: {fileID: 8045936885489574326, guid: e198ad80a69c9ea40be405b092203880, type: 3}
       propertyPath: m_RootOrder
@@ -843,15 +822,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8045936885489574326, guid: e198ad80a69c9ea40be405b092203880, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18
+      value: 45.46
       objectReference: {fileID: 0}
     - target: {fileID: 8045936885489574326, guid: e198ad80a69c9ea40be405b092203880, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 17.52
       objectReference: {fileID: 0}
     - target: {fileID: 8045936885489574326, guid: e198ad80a69c9ea40be405b092203880, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15
+      value: 81.16
       objectReference: {fileID: 0}
     - target: {fileID: 8045936885489574326, guid: e198ad80a69c9ea40be405b092203880, type: 3}
       propertyPath: m_LocalRotation.w

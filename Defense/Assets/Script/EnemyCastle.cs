@@ -2,6 +2,7 @@ using Entity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Enemy.EnemyTypes;
 
 public class EnemyCastle : Castle
 {
@@ -11,7 +12,7 @@ public class EnemyCastle : Castle
     // Start is called before the first frame update
     void Start()
     {
-        world.SpawnEnemy("Cube", transform.position);
+        world.SpawnEnemy(Cube, transform.position);
     }
     
     // Update is called once per frame

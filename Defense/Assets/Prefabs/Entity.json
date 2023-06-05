@@ -1,8 +1,0 @@
-{
-    "enemies": [
-        {
-            "name": "Cube",
-            "prefabPath": "Prefabs/Enemy.prefab"
-        }
-    ]
-}
