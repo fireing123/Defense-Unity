@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class Castle : Load
 {
-    enum CastleType
-    {
-        AsmodianEnemy, // START
-        HumanEnemy, 
-        Ally, // END
-    }
 
     public string castleName;
     public string castleType;

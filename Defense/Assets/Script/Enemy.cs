@@ -9,19 +9,19 @@ public class Enemy : MonoBehaviour
     public Vector3 nextDirection;
     public int speed;
 
-    void Start()
+    public virtual void Start()
     {
     
     }
 
-    private void Update()
+    public virtual void Update()
     {
-        transform.Translate(nextDirection * speed);
+       MoveLoad();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "load") return;
+        if (!other.CompareTag("load")) return;
         
         transform.position = other.transform.position;
         Load load = other.GetComponent<Load>();
@@ -30,10 +30,22 @@ public class Enemy : MonoBehaviour
             nextDirection = -load.nodeDirection / 360;
         } else
         {
-            Destroy(gameObject);
-            other.GetComponent<Castle>().HPDrmove(5);
+           AttackCastle(other);
         }
     }
+
+    public virtual void AttackCastle(Collider collider)
+    {
+        Destroy(gameObject);
+        collider.GetComponent<Castle>().HPDrmove(5);
+    }
+
+    public virtual void MoveLoad()
+    {
+        transform.Translate(nextDirection * speed);
+    }
+
+
 
 }
 
