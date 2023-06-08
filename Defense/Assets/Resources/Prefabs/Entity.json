@@ -2,7 +2,11 @@
     "enemies": [
         {
             "name": "Cube",
-            "prefabPath": "Assets/Prefabs/Cube.prefab"
+            "prefabPath": "Prefabs/Cube"
+        },
+        {
+            "name": "Slime",
+            "prefabPath": "Prefabs/Slime Variant"
         }
     ]
 }

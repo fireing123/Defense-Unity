@@ -348,9 +348,10 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Script/Castle.cs"
-"Assets/Script/Enemy.cs"
+"Assets/Script/Enemy/Slime.cs"
 "Assets/Script/EnemyCastle.cs"
 "Assets/Script/EnemyPrefabManager.cs"
+"Assets/Script/LivingEnemy.cs"
 "Assets/Script/Load.cs"
 "Assets/Script/Types/EnemyTypes.cs"
 -langversion:9.0

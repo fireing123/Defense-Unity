@@ -12,7 +12,7 @@ public class EnemyCastle : Castle
     // Start is called before the first frame update
     void Start()
     {
-        world.SpawnEnemy(Cube, transform.position);
+        world.SpawnEnemy(Slime, transform.position);
     }
     
     // Update is called once per frame

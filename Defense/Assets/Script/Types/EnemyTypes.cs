@@ -7,5 +7,6 @@ namespace Enemy
     public static class EnemyTypes
     {
         public static string Cube = "Cube";
+        public static string Slime = "Slime";
     }
 }
