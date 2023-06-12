@@ -17,6 +17,7 @@ namespace Enemy
 
         public virtual void Update()
         {
+            if (animator)
             MoveLoad();
         }
 
@@ -28,7 +29,7 @@ namespace Enemy
 
             if (load.types == LoadTypes.AllyCastle)
             {
-                animator.SetTrigger("Attack");
+                animator.SetBool("Attacks", true);
             } else
             {
                 nextDirection = -load.nodeDirection;
