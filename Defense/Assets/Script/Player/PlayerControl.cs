@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
     public float speed = 0.5f;
     public float jumpPow = 10f;
     private Rigidbody rb;
-    public bool isjumping;
+    public bool isJumping;
 
     public int camaraRotation = 3;
     private float mouseX = 0;
@@ -26,7 +26,7 @@ public class PlayerControl : MonoBehaviour
     {
         PlayerRotation();
         Move();
-        Jump();
+        Jump(jumpPow);
     }
 
     void PlayerRotation()
@@ -47,15 +47,15 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    void Jump()
+    public void Jump(float _jumpPower)
     {
         // 스페이스바를 누르면(또는 누르고 있으면)
-        if (Input.GetKey(KeyCode.Space) && !isjumping)
+        if (Input.GetKey(KeyCode.Space) && !isJumping)
         {
             // body에 힘을 가한다(AddForce)
             // AddForce(방향, 힘을 어떻게 가할 것인가)
-            rb.AddForce(Vector3.up * jumpPow, ForceMode.Impulse);
-            isjumping = true;
+            rb.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
+            isJumping = true;
         }
     }
 
@@ -64,7 +64,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ground"))
         {
-            isjumping = false;
+            isJumping = false;
         }
     }
 }

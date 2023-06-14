@@ -14,28 +14,41 @@ namespace Enemy
         public int HP;
         public int speed;
         public int attackPower;
+        public float attackTime;
+        public bool move;
+
 
         public virtual void Update()
         {
-            if (animator)
-            MoveLoad();
+            if (move) MoveLoad();
         }
 
         public void OnTriggerEnter(Collider other)
         {
             LoadNode load = other.GetComponent<LoadNode>();
 
-            transform.position = other.transform.position;
+            Debug.Log(load?.types);
 
-            if (load.types == LoadTypes.AllyCastle)
+            if (other.CompareTag("load"))
             {
-                animator.SetBool("Attacks", true);
-            } else
-            {
-                nextDirection = -load.nodeDirection;
+                
+                if (load.types == LoadTypes.AllyCastle)
+                {
+                    move = false;
+                    animator.SetBool("Walk", false);
+                    animator.SetTrigger("Attack");
+                    StartCoroutine(AttackAt(other.gameObject));
 
-                transform.rotation = LookAt(nextDirection);
-                animator.SetBool("Walk", true);
+                }
+                else {
+                    transform.position = other.transform.position;
+
+                    move = true;
+                    nextDirection = -load.nodeDirection;
+
+                    transform.rotation = LookAt(nextDirection);
+                    animator.SetBool("Walk", true);
+                }
             }
         }
 
@@ -49,15 +62,12 @@ namespace Enemy
             transform.position += nextDirection * speed / 360;
         }
 
-        public void AttackFormName(string name)
+        public IEnumerator AttackAt(GameObject @gameObject)
         {
-            try { 
-                GameObject target = GameObject.Find(name);
-                Castle castle = target.GetComponent<Castle>();
-                castle.HPDrmove(attackPower);
-            }
-            catch (Exception e) { Debug.LogError(e); }
-            
+            yield return new WaitForSeconds(attackTime);
+            Castle castle = @gameObject.GetComponent<Castle>();
+            castle.HPDrmove(attackPower);
+            Destroy(gameObject);
         }
     }
 
