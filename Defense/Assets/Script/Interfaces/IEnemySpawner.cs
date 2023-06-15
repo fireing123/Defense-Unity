@@ -1,12 +1,13 @@
 
 
 
+using System.Collections;
 using UnityEngine;
 
 namespace Enemy
 {
     public interface IEnemySpawner
     {
-        GameObject SpawnEnemy(string name, Vector3 position);
+        IEnumerator SpawnEnemy(string name, Transform fatherTransform, Vector3 position, float WaitSecond);
     }
 }

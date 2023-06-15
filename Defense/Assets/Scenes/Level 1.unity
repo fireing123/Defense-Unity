@@ -168,6 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 289235942}
+  - component: {fileID: 289235943}
   - component: {fileID: 289235941}
   m_Layer: 0
   m_Name: EnemyPreFabManger
@@ -188,6 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41e2c0044741144aa8f3f3e4d695a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waves: {fileID: 289235943}
+  waveInt: 0
+  isWaveEnd: 1
   enemyPrefabDataJson: {fileID: 4900000, guid: 45659053704fed04d8ca22b049ea76d7, type: 3}
 --- !u!4 &289235942
 Transform:
@@ -202,8 +206,20 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &289235943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289235940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12ea0d2170cf85498ee307f88fe8171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &477600720 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7197338263815362894, guid: 0b4b78683cdac2149ac371be5d59e2a9, type: 3}
@@ -609,7 +625,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1329852475
 GameObject:
@@ -677,7 +693,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1342738922 stripped
 Transform:
@@ -767,7 +783,7 @@ Transform:
   - {fileID: 74374091}
   - {fileID: 1552992310}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1552992310 stripped
 Transform:
@@ -1005,7 +1021,7 @@ RectTransform:
   m_Children:
   - {fileID: 1766702044}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1031,6 +1047,10 @@ PrefabInstance:
       propertyPath: nextNode
       value: 
       objectReference: {fileID: 74374091}
+    - target: {fileID: 3734366015749485975, guid: 33e10905279ef8e4a89963b7bfa79313, type: 3}
+      propertyPath: waveFather
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8994466250453806808, guid: 33e10905279ef8e4a89963b7bfa79313, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1112,7 +1132,7 @@ Transform:
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1996216346
 CapsuleCollider:
@@ -1208,7 +1228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   jumpPow: 10
-  isjumping: 0
+  isJumping: 0
   camaraRotation: 3
 --- !u!4 &2017975885 stripped
 Transform:

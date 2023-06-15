@@ -62,10 +62,10 @@ namespace Enemy
             transform.position += nextDirection * speed / 360;
         }
 
-        public IEnumerator AttackAt(GameObject @gameObject)
+        public IEnumerator AttackAt(GameObject @Object)
         {
             yield return new WaitForSeconds(attackTime);
-            Castle castle = @gameObject.GetComponent<Castle>();
+            Castle castle = @Object.GetComponent<Castle>();
             castle.HPDrmove(attackPower);
             Destroy(gameObject);
         }
