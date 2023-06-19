@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: e12ea0d2170cf85498ee307f88fe8171
+guid: ede41c2a4bb62bd4dbbc7cc7b83ea9d6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - WaveDataJson: {fileID: 4900000, guid: c349b26e4f133534b8073a242d35480f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

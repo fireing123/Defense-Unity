@@ -6,28 +6,35 @@ using UnityEngine;
 public class EnemyCastle : Castle
 {
 
-    public EnemyPrefabManager world;
+    public EnemyWave level;
 
     [SerializeField]
     private GameObject waveFather;
 
     void Start()
     {
-        
     }
     
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
-        Debug.Log(world.waves.UpdateLevel());
-        if (world.isWaveEnd)
+       
+        if (!level.isWaving)
         {
-            waveFather = world.UpdateWave(transform.position, 2.0f, world.GetWaveInt());
+           
+            if (level.UpdateWave())
+            {
+                level.isWaving = true;
+                waveFather = new(level.waveName);
+                level.SpawnWave(waveFather.transform, transform.position, 2f);
+            }
+
         }
 
-        if (waveFather.GetComponentsInChildren<Transform>().Length == 1) world.isWaveEnd = true;
+        if (waveFather.GetComponentsInChildren<Transform>().Length == 1)
+        {
+            level.isWaving = false;
+        }
     }
-
-
 }

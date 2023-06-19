@@ -353,16 +353,16 @@
 "Assets/Script/Interfaces/IEnemyActions.cs"
 "Assets/Script/Interfaces/IEnemySpawner.cs"
 "Assets/Script/Interfaces/ISpawnWave.cs"
+"Assets/Script/JsonType/PrefabsDataManger.cs"
+"Assets/Script/JsonType/WavesData.cs"
 "Assets/Script/Load/Castle.cs"
 "Assets/Script/Load/EnemyCastle.cs"
 "Assets/Script/Load/LoadNode.cs"
 "Assets/Script/Player/PlayerControl.cs"
 "Assets/Script/Types/EnemyTypes.cs"
 "Assets/Script/Types/LoadType.cs"
-"Assets/Script/WaveLevel/Level1.cs"
-"Assets/Script/WaveLevel/LevelWaves.cs"
 "Assets/Script/WorldManger/EnemyPrefabManager.cs"
-"Assets/Script/WorldManger/PrefabsDataManger.cs"
+"Assets/Script/WorldManger/EnemyWave.cs"
 -langversion:9.0
 
 /deterministic

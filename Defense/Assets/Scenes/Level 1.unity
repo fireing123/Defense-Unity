@@ -168,8 +168,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 289235942}
+  - component: {fileID: 289235944}
   - component: {fileID: 289235943}
-  - component: {fileID: 289235941}
   m_Layer: 0
   m_Name: EnemyPreFabManger
   m_TagString: Untagged
@@ -177,22 +177,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &289235941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 289235940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a41e2c0044741144aa8f3f3e4d695a27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: {fileID: 289235943}
-  waveInt: 0
-  isWaveEnd: 1
-  enemyPrefabDataJson: {fileID: 4900000, guid: 45659053704fed04d8ca22b049ea76d7, type: 3}
 --- !u!4 &289235942
 Transform:
   m_ObjectHideFlags: 0
@@ -217,9 +201,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 289235940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e12ea0d2170cf85498ee307f88fe8171, type: 3}
+  m_Script: {fileID: 11500000, guid: ede41c2a4bb62bd4dbbc7cc7b83ea9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaveDataJson: {fileID: 4900000, guid: c349b26e4f133534b8073a242d35480f, type: 3}
+  isWaving: 0
+  waveName: 
+--- !u!114 &289235944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289235940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a41e2c0044741144aa8f3f3e4d695a27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabDataJson: {fileID: 4900000, guid: 45659053704fed04d8ca22b049ea76d7, type: 3}
 --- !u!1 &477600720 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7197338263815362894, guid: 0b4b78683cdac2149ac371be5d59e2a9, type: 3}
@@ -1040,9 +1040,13 @@ PrefabInstance:
       value: EnemyCastle
       objectReference: {fileID: 0}
     - target: {fileID: 3734366015749485975, guid: 33e10905279ef8e4a89963b7bfa79313, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 289235943}
+    - target: {fileID: 3734366015749485975, guid: 33e10905279ef8e4a89963b7bfa79313, type: 3}
       propertyPath: world
       value: 
-      objectReference: {fileID: 289235941}
+      objectReference: {fileID: 0}
     - target: {fileID: 3734366015749485975, guid: 33e10905279ef8e4a89963b7bfa79313, type: 3}
       propertyPath: nextNode
       value: 

@@ -1,9 +1,10 @@
-
+using System.Threading.Tasks;
 using UnityEngine;
+
 namespace Enemy
 {
     interface ISpawnWave
     {
-        GameObject SpawnWave(string waveName, string[] waveObjectNames, Vector3 position, float waitSec);
+        void SpawnWave(Transform father, Vector3 position, float waitSec);
     }
 }
