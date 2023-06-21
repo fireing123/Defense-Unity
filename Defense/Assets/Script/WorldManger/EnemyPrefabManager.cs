@@ -10,9 +10,6 @@ namespace EnemyEntity
     public class EnemyPrefabManager : PrefabManger<EnemyPrefabData>
     {
 
-        public TextAsset enemyPrefabDataJson;
-        
-
         private Dictionary<string, GameObject> enemyPrefabs;
 
         private void Awake()

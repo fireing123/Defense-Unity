@@ -18,7 +18,7 @@ namespace AllyEntity
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("Enemy")) return;
+            if (!other.CompareTag("Enemy")) return;
 
             if (isfocus == null) isfocus = other.gameObject; 
 
@@ -31,11 +31,17 @@ namespace AllyEntity
                     enemy.HP -= attackPower;
                 }
             }
-            catch (Exception e)
+            catch
             {
-                Debug.Log(e.ToString());
                 enemy.coodown.Add(cooldown);
             }
+            var tr = GetComponentsInChildren<Transform>()[1];
+            tr.rotation = LookAt(other.transform.position - tr.position);
+        }
+
+        public Quaternion LookAt(Vector3 direction)
+        {
+            return Quaternion.LookRotation(direction);
         }
     }
 }
