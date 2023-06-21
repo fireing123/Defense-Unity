@@ -1,12 +1,13 @@
+using Prefab;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Enemy
+namespace EnemyEntity
 {
 
-    public class EnemyPrefabManager : MonoBehaviour
+    public class EnemyPrefabManager : PrefabManger<EnemyPrefabData>
     {
 
         public TextAsset enemyPrefabDataJson;
@@ -21,21 +22,19 @@ namespace Enemy
 
         private void LoadEnemyPrefabs()
         {
-            EnemyPrefabData prefabData = JsonUtility.FromJson<EnemyPrefabData>(enemyPrefabDataJson.text);
+            EnemyPrefabData prefabData = LoadPrefab();
 
             enemyPrefabs = new Dictionary<string, GameObject>();
 
             foreach (EnemyPrefabInfo enemyInfo in prefabData.enemies)
             {
                 GameObject prefab = Resources.Load<GameObject>(enemyInfo.prefabPath);
-                if (prefab != null)
-                {
-                    enemyPrefabs.Add(enemyInfo.name, prefab);
-                }
-                else
-                {
-                    Debug.LogWarning("Failed to load prefab: " + enemyInfo.name);
-                }
+                
+                if (prefab != null)  
+                enemyPrefabs.Add(enemyInfo.name, prefab); 
+
+                else  
+                Debug.LogWarning("Failed to load prefab: " + enemyInfo.name); 
             }
         }
 

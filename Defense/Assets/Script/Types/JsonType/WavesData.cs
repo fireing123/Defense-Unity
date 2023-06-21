@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Enemy
+namespace EnemyEntity
 {
 
     [System.Serializable]

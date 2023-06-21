@@ -1,17 +1,15 @@
-using Enemy;
-using System.Collections;
+using Prefab;
+
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Enemy
+namespace EnemyEntity
 {
-
-    public class EnemyWave : MonoBehaviour, IEnemySpawner, ISpawnWave
+    public class EnemyWave : PrefabManger<WavesData>, IEnemySpawner, ISpawnWave
     {
 
-        public TextAsset WaveDataJson;
         public bool isWaving;
         public string waveName;
         private int waveid=-1;
@@ -62,7 +60,7 @@ namespace Enemy
 
         public void LoadEnemyWaves()
         {
-            WavesData waves = JsonUtility.FromJson<WavesData>(WaveDataJson.text);
+            WavesData waves = LoadPrefab();
             
             foreach (Wavesinfo wave in waves.level)
             {

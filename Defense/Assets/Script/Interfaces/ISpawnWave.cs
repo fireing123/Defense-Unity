@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Enemy
+namespace EnemyEntity
 {
     interface ISpawnWave
     {

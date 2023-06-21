@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Enemy
+namespace EnemyEntity
 {
     public interface IEnemySpawner
     {

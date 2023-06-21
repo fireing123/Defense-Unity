@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Entity
+namespace AllyEntity
 {
+    [System.Serializable]
     public class AllyPrefabsData
     {
-        public List<AllyPrefabsInfo> allyies;
+        public List<AllyPrefabsInfo> allies;
     }
 
+    [System.Serializable]
     public class AllyPrefabsInfo
     {
         public string name;

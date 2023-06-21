@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Load;
 
-namespace Enemy
+namespace EnemyEntity
 {
     public class LivingEnemy : MonoBehaviour, IEnemyActions
     {

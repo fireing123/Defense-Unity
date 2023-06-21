@@ -3,7 +3,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Enemy
+namespace EnemyEntity
 {
     public interface IEnemyActions
     {
