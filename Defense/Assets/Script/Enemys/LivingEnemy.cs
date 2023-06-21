@@ -16,11 +16,14 @@ namespace Enemy
         public int attackPower;
         public float attackTime;
         public bool move;
+        public List<int> coodown = new();
 
 
-        public virtual void Update()
+        public virtual void FixedUpdate()
         {
             if (move) MoveLoad();
+            TimeCooldwon();
+            if (!IsLiving()) Die();
         }
 
         public void OnTriggerEnter(Collider other)
@@ -51,6 +54,26 @@ namespace Enemy
                 }
             }
         }
+        void Die()
+        {
+            Destroy(gameObject);
+        }
+
+        bool IsLiving()
+        {
+            return HP > 0;
+        }
+
+        void TimeCooldwon()
+        {
+            for (int i = 0; i < coodown.Count; i++)
+            {
+                if (coodown[i] > 0)
+                {
+                    coodown[i] -= 1;
+                }
+            }
+        }
 
         public Quaternion LookAt(Vector3 direction)
         {
@@ -59,7 +82,7 @@ namespace Enemy
 
         protected virtual void MoveLoad()
         {
-            transform.position += nextDirection * speed / 360;
+            transform.position += nextDirection * speed / 120;
         }
 
         public IEnumerator AttackAt(GameObject @Object)
