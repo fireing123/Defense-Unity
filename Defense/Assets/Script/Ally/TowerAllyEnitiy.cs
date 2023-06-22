@@ -11,7 +11,7 @@ namespace AllyEntity
         public int cooldown;
         public int attackPower;
         public int id;
-        
+        public Animator animator;
 
         public GameObject isfocus;
 
@@ -27,6 +27,7 @@ namespace AllyEntity
             {
                 if (enemy.coodown[id] <= 0 && isfocus == other.gameObject)
                 {
+                    animator.SetTrigger("Attack");
                     enemy.coodown[id] = cooldown;
                     enemy.HP -= attackPower;
                 }
