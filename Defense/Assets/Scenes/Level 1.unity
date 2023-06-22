@@ -1259,6 +1259,14 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1070506265}
+    - target: {fileID: 1171269908, guid: 6464f6cb30c808645ac1187c637d483e, type: 3}
+      propertyPath: cooldown
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171269908, guid: 6464f6cb30c808645ac1187c637d483e, type: 3}
+      propertyPath: attackPower
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3120732246051417487, guid: 6464f6cb30c808645ac1187c637d483e, type: 3}
       propertyPath: m_Name
       value: Turret Tower
@@ -1309,7 +1317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3124277401159065537, guid: 6464f6cb30c808645ac1187c637d483e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3124277401159065537, guid: 6464f6cb30c808645ac1187c637d483e, type: 3}
       propertyPath: m_LocalRotation.w

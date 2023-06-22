@@ -2,11 +2,11 @@
     "level" : [
         {
             "name" : "wave 1",
-            "enemys" : ["Slime", "Slime"]
+            "enemys" : ["Slime", "Slime", "Slime", "Slime", "Slime", "Slime", "Slime", "Slime", "Slime", "Slime", "Slime"]
         },
         {
             "name" : "wave 2",
-            "enemys" : ["Slime", "Slime"]
+            "enemys" : ["Slime", "Slime", "Slime", "Slime", "Slime", "Slime", "Slime", "Slime"]
         }
     ]
 }

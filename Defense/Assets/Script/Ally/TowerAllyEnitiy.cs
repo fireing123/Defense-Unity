@@ -20,7 +20,10 @@ namespace AllyEntity
         {
             if (!other.CompareTag("Enemy")) return;
 
-            if (isfocus == null) isfocus = other.gameObject; 
+            if (isfocus ==null)
+            {
+                isfocus = other.gameObject;
+            } 
 
             LivingEnemy enemy = other.GetComponent<LivingEnemy>();
             try
@@ -38,6 +41,16 @@ namespace AllyEntity
             }
             var tr = GetComponentsInChildren<Transform>()[1];
             tr.rotation = LookAt(other.transform.position - tr.position);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject == isfocus)
+            {
+                isfocus = null;
+
+            }
+
         }
 
         public Quaternion LookAt(Vector3 direction)
