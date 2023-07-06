@@ -1183,7 +1183,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 395548472}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1996216352}
+        m_TargetAssemblyTypeName: CreateTower, Assembly-CSharp
+        m_MethodName: SetBuildClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1326093064322132, guid: a425124410f363a43adb6788601cc3e0, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &395548472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3766,8 +3778,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1385567466}
   - component: {fileID: 1385567465}
+  - component: {fileID: 1385567467}
   - component: {fileID: 1385567464}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Can Install
   m_TagString: install
   m_Icon: {fileID: 0}
@@ -3832,13 +3845,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385567463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2907238, y: 12.634573, z: -105.429565}
+  m_LocalPosition: {x: 0.2907238, y: -22.2, z: -105.429565}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1385567467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385567463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c829a85ce0a6274cacdd21972bd3107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1400823846
 GameObject:
   m_ObjectHideFlags: 0
@@ -6066,6 +6091,7 @@ GameObject:
   - component: {fileID: 1996216346}
   - component: {fileID: 1996216350}
   - component: {fileID: 1996216351}
+  - component: {fileID: 1996216352}
   m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
@@ -6185,6 +6211,19 @@ MonoBehaviour:
   jumpPow: 10
   isJumping: 0
   camaraRotation: 3
+--- !u!114 &1996216352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996216344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66caafcb9772eb548852217263fa5af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildClick: {fileID: 0}
 --- !u!1 &1998060186
 GameObject:
   m_ObjectHideFlags: 0

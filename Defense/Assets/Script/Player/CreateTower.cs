@@ -1,24 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using static LayerType.Layers;
 
 public class CreateTower : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    Camera _Camara = null;
+
+    private bool _mouseState;
+
+    private GameObject target;
+
+    private Vector3 _mousePosition;
+
+    public GameObject buildClick;
+
+    private void Start()
     {
-        
+        _Camara = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0)) OnMouseButtonDown();
+
     }
 
-    // 버튼 을 누르면 설치 가능한 곳이 녹색 빛 을 뿜 는 다 
+    public void SetBuildClick(GameObject @object)
+    {
+        buildClick = @object;
+    }
+
+    private void OnMouseButtonDown()
+    {
+        Debug.Log("hello");
+        GameObject _obj = GetClickObject();
+        Debug.Log(_obj?.name);
+        if (_obj?.layer == (int)Layer.Install)
+        {
+            var node = _obj.GetComponent<InstallNode>();
+            node.Install(buildClick);
+        }
+
+    } 
 
 
-    // 버튼 을 누른후 설치 가능한 곳 오브젝트가 커서에 닿으면 오브젝트가 테두리를 강조하고 범위를 알린다
+
+    private GameObject GetClickObject()
+    {
+        Ray ray = _Camara.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray.origin, ray.direction * 10, out RaycastHit hit))
+        {
+            return hit.collider.gameObject;
+        }
+        return null;
+    }
 
 }
