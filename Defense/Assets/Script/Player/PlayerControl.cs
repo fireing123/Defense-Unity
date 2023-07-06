@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
 
+    public int account = 0;
+
     public float speed = 0.5f;
     public float jumpPow = 10f;
     private Rigidbody rb;
@@ -16,6 +18,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        account = PlayerPrefs.GetInt("Account");
         rb = GetComponent<Rigidbody>();
     }
 
@@ -25,6 +28,17 @@ public class PlayerControl : MonoBehaviour
         PlayerRotation();
         Move();
         Jump(jumpPow);
+    }
+
+    public int GetAccount()
+    {
+        return account;
+    }
+
+    public void SetAccount(int _account)
+    {
+        PlayerPrefs.SetInt("Account", _account);
+        account = _account;
     }
 
     void PlayerRotation()
