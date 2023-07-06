@@ -1,0 +1,8 @@
+{
+    "allies": [
+        {
+            "name": "Ally",
+            "prefabPath": "Prefabs/Ally/Ally"
+        }
+    ]
+}
