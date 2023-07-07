@@ -41,8 +41,12 @@ public class PlayerControl : MonoBehaviour
 
     public int GetAccount()
     {
+        
         return account;
     }
+
+    public void PlusGold(int gold) => account += gold;
+    public void SubGold(int gold) => account -= gold;
 
     public void SetAccount(int _account)
     {

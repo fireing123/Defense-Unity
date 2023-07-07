@@ -17,8 +17,11 @@ public class CreateTower : MonoBehaviour
 
     public GameObject buildClick;
 
+    private PlayerControl _playerControl;
+
     private void Start()
     {
+        _playerControl = GetComponent<PlayerControl>();
         _Camara = Camera.main;
     }
 
@@ -39,14 +42,23 @@ public class CreateTower : MonoBehaviour
     {
         GameObject _obj = GetClickObject();
         
-        if (_obj?.layer == (int)Layer.Install)
+        if (_obj?.layer == (int)Layer.Install && BuildAlly(_obj))
         {
-            var node = _obj.GetComponent<InstallNode>();
-            node.Install(buildClick);
+
         }
+
+
 
     } 
 
+    private bool BuildAlly(GameObject obj)
+    {
+        if (_playerControl.GetAccount() < AllyPrices.Turret) return false;
+        var node = obj.GetComponent<InstallNode>();
+        node.Install(buildClick);
+        _playerControl.SubGold(AllyPrices.Turret);
+        return true;
+    }
 
 
     private GameObject GetClickObject()
