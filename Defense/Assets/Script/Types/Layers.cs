@@ -14,7 +14,8 @@ namespace LayerType
             Ground,
             Water,
             UI,
-            Install
+            Install,
+            Installed,
         }
     }
 }

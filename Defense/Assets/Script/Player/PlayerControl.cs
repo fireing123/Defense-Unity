@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -8,8 +9,10 @@ public class PlayerControl : MonoBehaviour
 
     public int account = 0;
 
+    public TMP_Text goldUi;
     public float speed = 0.5f;
     public float jumpPow = 10f;
+
     private Rigidbody rb;
     public bool isJumping;
 
@@ -19,6 +22,7 @@ public class PlayerControl : MonoBehaviour
     void Awake()
     {
         account = PlayerPrefs.GetInt("Account");
+        ChangeGoldUI(account);
         rb = GetComponent<Rigidbody>();
     }
 
@@ -28,6 +32,11 @@ public class PlayerControl : MonoBehaviour
         PlayerRotation();
         Move();
         Jump(jumpPow);
+    }
+
+    public void ChangeGoldUI(int gold)
+    {
+        goldUi.text = "Gold : " + gold.ToString();
     }
 
     public int GetAccount()

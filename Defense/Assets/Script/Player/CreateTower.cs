@@ -28,6 +28,8 @@ public class CreateTower : MonoBehaviour
 
     }
 
+    
+
     public void SetBuildClick(GameObject @object)
     {
         buildClick = @object;
@@ -35,9 +37,8 @@ public class CreateTower : MonoBehaviour
 
     private void OnMouseButtonDown()
     {
-        Debug.Log("hello");
         GameObject _obj = GetClickObject();
-        Debug.Log(_obj?.name);
+        
         if (_obj?.layer == (int)Layer.Install)
         {
             var node = _obj.GetComponent<InstallNode>();

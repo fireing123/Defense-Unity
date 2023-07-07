@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4939996705135754, guid: a425124410f363a43adb6788601cc3e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.64447975
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4939996705135754, guid: a425124410f363a43adb6788601cc3e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000076293945
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4939996705135754, guid: a425124410f363a43adb6788601cc3e0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.581786
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4939996705135754, guid: a425124410f363a43adb6788601cc3e0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -106,4 +106,5 @@ MonoBehaviour:
   cooldown: 300
   attackPower: 5
   id: 0
+  animator: {fileID: 0}
   isfocus: {fileID: 0}
