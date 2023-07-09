@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class AllyPrices
 {
-    public static int Turret = 10;
+    public static readonly int Turret = 10;
 }

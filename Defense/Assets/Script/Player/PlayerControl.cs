@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class PlayerControl : MonoBehaviour
     public int account = 0;
 
     public TMP_Text goldUi;
+    public TMP_Text Select;
+    
     public float speed = 0.5f;
     public float jumpPow = 10f;
 
@@ -18,12 +22,18 @@ public class PlayerControl : MonoBehaviour
 
     public int camaraRotation = 3;
     private float mouseX = 0;
+
+    public GoldEvent onGoldChange;
+    public SelectEvent onSelectChange;
+
     // Start is called before the first frame update
     void Awake()
     {
-        account = PlayerPrefs.GetInt("Account");
-        ChangeGoldUI(account);
         rb = GetComponent<Rigidbody>();
+        onGoldChange.AddListener(ChangeGoldUI);
+        onSelectChange.AddListener(SetSelect);
+
+        SetAccount(account);
     }
 
     // Update is called once per frame
@@ -33,25 +43,37 @@ public class PlayerControl : MonoBehaviour
         Move();
         Jump(jumpPow);
     }
-
+    
     public void ChangeGoldUI(int gold)
     {
         goldUi.text = "Gold : " + gold.ToString();
     }
 
     public int GetAccount()
-    {
-        
+    {   
         return account;
     }
 
-    public void PlusGold(int gold) => account += gold;
-    public void SubGold(int gold) => account -= gold;
-
     public void SetAccount(int _account)
     {
-        PlayerPrefs.SetInt("Account", _account);
         account = _account;
+        onGoldChange.Invoke(account);
+    }
+
+    public void PlusGold(int gold)
+    {
+        account += gold;
+        onGoldChange.Invoke(account);
+    }
+    public void SubGold(int gold)
+    {
+        account -= gold;
+        onGoldChange.Invoke(account);
+    }
+
+    public void SetSelect(string selectName)
+    {
+        Select.text = "Select : " + selectName;
     }
 
     void PlayerRotation()
@@ -87,7 +109,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 3)
+        if (collision.gameObject.layer.Equals(3))
         {
             isJumping = false;
         }

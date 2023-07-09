@@ -9,12 +9,6 @@ public class CreateTower : MonoBehaviour
 
     Camera _Camara = null;
 
-    private bool _mouseState;
-
-    private GameObject target;
-
-    private Vector3 _mousePosition;
-
     public GameObject buildClick;
 
     private PlayerControl _playerControl;
@@ -36,19 +30,17 @@ public class CreateTower : MonoBehaviour
     public void SetBuildClick(GameObject @object)
     {
         buildClick = @object;
+        _playerControl.onSelectChange.Invoke(@object.name);
     }
 
     private void OnMouseButtonDown()
     {
         GameObject _obj = GetClickObject();
         
-        if (_obj?.layer == (int)Layer.Install && BuildAlly(_obj))
+        if (_obj?.layer == (byte)Layer.Install && BuildAlly(_obj))
         {
-
+            _obj.layer = (byte)Layer.Installed;
         }
-
-
-
     } 
 
     private bool BuildAlly(GameObject obj)

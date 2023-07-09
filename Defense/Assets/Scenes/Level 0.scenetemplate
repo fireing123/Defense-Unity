@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13966, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: Level 0
+  m_EditorClassIdentifier: 
+  templateScene: {fileID: 102900000, guid: cfadfc92d9fa0bd4c954eb45098bcc70, type: 3}
+  templateName: Level
+  description: "\uB808\uBCA8 \uAD6C\uC131\uC5D0 \uAF2D \uD544\uC694\uD55C \uAC83\uB4E4"
+  preview: {fileID: 0}
+  dependencies:
+  - dependency: {fileID: 4900000, guid: 45659053704fed04d8ca22b049ea76d7, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 4900000, guid: c349b26e4f133534b8073a242d35480f, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 1326093064322132, guid: a425124410f363a43adb6788601cc3e0, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: ee148e281f3c41c5b4ff5f8a5afe5a6c, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2100000, guid: 13896b90f57e8bb4f807d0e390cb3f8f, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: 2fd6421f253b4ef1a19526541f9ffc0c, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: dbe3fdbe824417c438ed6c7a34f3e2bb, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 4900000, guid: f2bb16c6371e4264080e765109c22cae, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 100002, guid: ddeed831b3d4e3b47bcce076e2d9c239, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    instantiationMode: 1
+  templatePipeline: {fileID: 11500000, guid: fe134ff62739e0c489cdf7d11014bf6d, type: 3}
+  badge: {fileID: 0}
+  addToDefaults: 0

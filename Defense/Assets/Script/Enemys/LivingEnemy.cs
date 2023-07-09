@@ -11,12 +11,23 @@ namespace EnemyEntity
     {
         public Animator animator;
         public Vector3 nextDirection;
+
+        [Header("Enemy Status")]
         public int HP;
-        public int speed;
-        public int attackPower;
-        public float attackTime;
+        public byte speed;
+        public byte attackPower;
+        public byte attackTime;
+
+        [Space(5)]
+
+        public byte defense;
+        public byte physicalDefense;
+        public byte magicDefense;
+
+        [Space(3)]
+
         public bool move;
-        public List<int> coodown = new();
+        public List<ushort> coodown = new();
 
 
         public virtual void FixedUpdate()
@@ -35,7 +46,7 @@ namespace EnemyEntity
             if (other.CompareTag("load"))
             {
                 
-                if (load.types == LoadTypes.AllyCastle)
+                if (load.types.Equals(LoadTypes.AllyCastle))
                 {
                     move = false;
                     animator.SetBool("Walk", false);
@@ -54,6 +65,29 @@ namespace EnemyEntity
                 }
             }
         }
+
+        public void attacked(byte power, bool isAD)
+        {
+            if (isAD)
+            {
+                HP -= power / physicalDefense;
+            } else
+            {
+                HP -= power / magicDefense;
+            }
+        }
+
+        public void PhysicalAttack(byte power) => attacked(power, true);
+
+        public void MagicAttack(byte power) => attacked(power, false);
+
+        
+
+        public void SetCooldown(ushort _cooldown, byte id)
+        {
+            coodown[id] = _cooldown;
+        }
+
         void Die()
         {
             Destroy(gameObject);

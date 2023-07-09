@@ -8,9 +8,10 @@ namespace AllyEntity
 
     public class TowerAllyEnitiy : MonoBehaviour
     {
-        public int cooldown;
-        public int attackPower;
-        public int id;
+        public ushort cooldown;
+        public byte physicalAttackPower;
+        public byte magicAttackPower;
+        public byte id;
         public Animator animator;
 
         public GameObject isfocus;
@@ -31,8 +32,9 @@ namespace AllyEntity
                 if (enemy.coodown[id] <= 0 && isfocus == other.gameObject)
                 {
                     animator.SetTrigger("Attack");
-                    enemy.coodown[id] = cooldown;
-                    enemy.HP -= attackPower;
+                    enemy.SetCooldown(cooldown, id);
+                    enemy.PhysicalAttack(physicalAttackPower);
+                    
                 }
             }
             catch
@@ -42,6 +44,8 @@ namespace AllyEntity
             var tr = GetComponentsInChildren<Transform>()[1];
             tr.rotation = LookAt(other.transform.position - tr.position);
         }
+
+        
 
         private void OnTriggerExit(Collider other)
         {
