@@ -18,13 +18,14 @@ public class PlayerControl : MonoBehaviour
     public float jumpPow = 10f;
 
     private Rigidbody rb;
-    public bool isJumping;
 
     public int camaraRotation = 3;
     private float mouseX = 0;
+    private float mouseY = 0;   
 
     public GoldEvent onGoldChange;
     public SelectEvent onSelectChange;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -40,8 +41,10 @@ public class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {
         PlayerRotation();
-        Move();
-        Jump(jumpPow);
+        Vector3 vector = Vector3.zero;
+        vector += Move();
+        vector += Jump(jumpPow);
+        transform.position = vector;
     }
     
     public void ChangeGoldUI(int gold)
@@ -79,39 +82,32 @@ public class PlayerControl : MonoBehaviour
     void PlayerRotation()
     {
         
-        mouseX += Input.GetAxis("Mouse X") * camaraRotation;//마우스 좌우움직임을 입력받아서 카메라의 Y축을 회전시킨다
-       
-        transform.eulerAngles = new Vector3 (0, mouseX, 0);
+        mouseX += Input.GetAxis("Mouse X") * camaraRotation; //마우스 좌우움직임을 입력받아서 카메라의 Y축을 회전시킨다
+        mouseY += Input.GetAxis("Mouse Y") * camaraRotation;
+        transform.eulerAngles = new Vector3 (0, mouseX, mouseY);
     }
 
-    void Move()
+    Vector3 Move()
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        Vector3 dir = new(h, 0, v);
-        transform.Translate(dir * speed);
+        return new(h, 0, v);
+        
 
     }
 
-    public void Jump(float _jumpPower)
+    public Vector3 Jump(float _jumpPower)
     {
         // 스페이스바를 누르면(또는 누르고 있으면)
-        if (Input.GetKey(KeyCode.Space) && !isJumping)
+        if (Input.GetKey(KeyCode.Space))
         {
-            // body에 힘을 가한다(AddForce)
-            // AddForce(방향, 힘을 어떻게 가할 것인가)
-            rb.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
-            isJumping = true;
+            return new(0, _jumpPower, 0);
         }
-    }
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer.Equals(3))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            isJumping = false;
+            return new(0, -_jumpPower, 0);
         }
+        return Vector3.zero;
     }
 }
