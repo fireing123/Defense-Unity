@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using static LayerType.Layers;
+using LayerType;
 
 public class CreateTower : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class CreateTower : MonoBehaviour
 
     private void Start()
     {
-        _playerControl = GetComponent<PlayerControl>();
+        TryGetComponent(out _playerControl);
         _Camara = Camera.main;
     }
 
@@ -46,7 +46,7 @@ public class CreateTower : MonoBehaviour
     private bool BuildAlly(GameObject obj)
     {
         if (_playerControl.GetAccount() < AllyPrices.Turret) return false;
-        var node = obj.GetComponent<InstallNode>();
+        obj.TryGetComponent(out InstallNode node);
         node.Install(buildClick);
         _playerControl.SubGold(AllyPrices.Turret);
         return true;

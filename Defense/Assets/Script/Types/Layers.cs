@@ -4,18 +4,15 @@ using UnityEngine;
 
 namespace LayerType
 {
-    public class Layers
+    public enum Layer
     {
-        public enum Layer
-        {
-            Default,
-            TransparentFX,
-            Ignore_Raycast,
-            Ground,
-            Water,
-            UI,
-            Install,
-            Installed,
-        }
+        Default,
+        TransparentFX,
+        Ignore_Raycast,
+        Ground,
+        Water,
+        UI,
+        Install,
+        Installed,
     }
 }

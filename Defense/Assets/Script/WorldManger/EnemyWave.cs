@@ -15,11 +15,11 @@ namespace EnemyEntity
         private int waveid=-1;
         public Dictionary<string, string[]> enemyWaves = new();
 
-        public EnemyPrefabManager EnemyPrefabManager { get; private set; }
+        public EnemyPrefabManager EnemyPrefabManager;
 
         void Awake()
         {
-            EnemyPrefabManager = GetComponent<EnemyPrefabManager>();
+            TryGetComponent(out EnemyPrefabManager);
             LoadEnemyWaves();
         }
 

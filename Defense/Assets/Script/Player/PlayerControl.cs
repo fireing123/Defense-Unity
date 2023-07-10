@@ -29,7 +29,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        TryGetComponent(out rb);
         onGoldChange.AddListener(ChangeGoldUI);
         onSelectChange.AddListener(SetSelect);
 

@@ -11,6 +11,7 @@ namespace EnemyEntity
     {
         public Animator animator;
         public Vector3 nextDirection;
+        public Vector3 prev;
 
         [Header("Enemy Status")]
         public int HP;
@@ -39,13 +40,10 @@ namespace EnemyEntity
 
         public void OnTriggerEnter(Collider other)
         {
-            LoadNode load = other.GetComponent<LoadNode>();
+            bool isLoad = other.TryGetComponent(out LoadNode load);
 
-            Debug.Log(load?.types);
-
-            if (other.CompareTag("load"))
+            if (isLoad)
             {
-                
                 if (load.types.Equals(LoadTypes.AllyCastle))
                 {
                     move = false;
@@ -59,7 +57,7 @@ namespace EnemyEntity
 
                     move = true;
                     nextDirection = -load.nodeDirection;
-
+                    prev = nextDirection * speed / 120;
                     transform.rotation = LookAt(nextDirection);
                     animator.SetBool("Walk", true);
                 }
@@ -116,13 +114,13 @@ namespace EnemyEntity
 
         protected virtual void MoveLoad()
         {
-            transform.position += nextDirection * speed / 120;
+            transform.position += prev;
         }
 
         public IEnumerator AttackAt(GameObject @Object)
         {
             yield return new WaitForSeconds(attackTime);
-            Castle castle = @Object.GetComponent<Castle>();
+            @Object.TryGetComponent(out Castle castle);
             castle.HPDrmove(attackPower);
             Destroy(gameObject);
         }
