@@ -15,9 +15,10 @@ public class PlayerControl : MonoBehaviour
     public TMP_Text Select;
     
     public float speed = 0.5f;
-    public float jumpPow = 10f;
+    public float jumpPow = 1f;
 
     private Rigidbody rb;
+    public Transform X;
 
     public int camaraRotation = 3;
     private float mouseX = 0;
@@ -44,7 +45,7 @@ public class PlayerControl : MonoBehaviour
         Vector3 vector = Vector3.zero;
         vector += Move();
         vector += Jump(jumpPow);
-        transform.position = vector;
+        transform.Translate(vector);
     }
     
     public void ChangeGoldUI(int gold)
@@ -84,7 +85,8 @@ public class PlayerControl : MonoBehaviour
         
         mouseX += Input.GetAxis("Mouse X") * camaraRotation; //마우스 좌우움직임을 입력받아서 카메라의 Y축을 회전시킨다
         mouseY += Input.GetAxis("Mouse Y") * camaraRotation;
-        transform.eulerAngles = new Vector3 (0, mouseX, mouseY);
+        X.eulerAngles = new(mouseY, X.eulerAngles.y, X.eulerAngles.z);
+        transform.eulerAngles = new(0, mouseX, 0);
     }
 
     Vector3 Move()
