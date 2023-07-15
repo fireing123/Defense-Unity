@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Load;
 
+
 namespace EnemyEntity
 {
     public class LivingEnemy : MonoBehaviour, IEnemyActions
@@ -18,6 +19,7 @@ namespace EnemyEntity
         public byte speed;
         public byte attackPower;
         public byte attackTime;
+        
 
         [Space(5)]
 
@@ -64,22 +66,11 @@ namespace EnemyEntity
             }
         }
 
-        public void attacked(byte power, bool isAD)
+        public void attacked(byte phyPower, byte magPower)
         {
-            if (isAD)
-            {
-                HP -= power / physicalDefense;
-            } else
-            {
-                HP -= power / magicDefense;
-            }
+            HP -= phyPower / physicalDefense;
+            HP -= magPower / magicDefense;
         }
-
-        public void PhysicalAttack(byte power) => attacked(power, true);
-
-        public void MagicAttack(byte power) => attacked(power, false);
-
-        
 
         public void SetCooldown(ushort _cooldown, byte id)
         {

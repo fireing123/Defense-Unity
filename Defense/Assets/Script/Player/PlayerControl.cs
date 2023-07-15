@@ -17,7 +17,6 @@ public class PlayerControl : MonoBehaviour
     public float speed = 0.5f;
     public float jumpPow = 1f;
 
-    private Rigidbody rb;
     public Transform X;
 
     public int camaraRotation = 3;
@@ -31,7 +30,6 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        TryGetComponent(out rb);
         onGoldChange.AddListener(ChangeGoldUI);
         onSelectChange.AddListener(SetSelect);
 
