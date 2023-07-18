@@ -23,15 +23,12 @@ public class PlayerControl : MonoBehaviour
     private float mouseX = 0;
     private float mouseY = 0;   
 
-    public GoldEvent onGoldChange;
-    public SelectEvent onSelectChange;
-
 
     // Start is called before the first frame update
     void Awake()
     {
-        onGoldChange.AddListener(ChangeGoldUI);
-        onSelectChange.AddListener(SetSelect);
+        EventsManger.GoldEvent.AddListener(ChangeGoldUI);
+        EventsManger.SelectEvent.AddListener(SetSelect);
 
         SetAccount(account);
     }
@@ -59,18 +56,18 @@ public class PlayerControl : MonoBehaviour
     public void SetAccount(int _account)
     {
         account = _account;
-        onGoldChange.Invoke(account);
+        EventsManger.GoldEvent.Invoke(account);
     }
 
     public void PlusGold(int gold)
     {
         account += gold;
-        onGoldChange.Invoke(account);
+        EventsManger.GoldEvent.Invoke(account);
     }
     public void SubGold(int gold)
     {
         account -= gold;
-        onGoldChange.Invoke(account);
+        EventsManger.GoldEvent.Invoke(account);
     }
 
     public void SetSelect(string selectName)

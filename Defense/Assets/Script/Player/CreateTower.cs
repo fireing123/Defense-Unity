@@ -9,7 +9,7 @@ public class CreateTower : MonoBehaviour
 
     Camera _Camara = null;
 
-    public GameObject buildClick;
+    public static GameObject buildClick;
 
     private PlayerControl _playerControl;
 
@@ -22,15 +22,14 @@ public class CreateTower : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(0)) OnMouseButtonDown();
-
     }
 
     
 
-    public void SetBuildClick(GameObject @object)
+    public static void SetBuildClick(GameObject @object)
     {
         buildClick = @object;
-        _playerControl.onSelectChange.Invoke(@object.name);
+        EventsManger.SelectEvent.Invoke(@object.name);
     }
 
     private void OnMouseButtonDown()

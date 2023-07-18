@@ -79,6 +79,7 @@ namespace EnemyEntity
 
         void Die()
         {
+            EventsManger.EnemyDeath.Invoke();
             Destroy(gameObject);
         }
 
@@ -113,7 +114,7 @@ namespace EnemyEntity
             yield return new WaitForSeconds(attackTime);
             @Object.TryGetComponent(out Castle castle);
             castle.HPDrmove(attackPower);
-            Destroy(gameObject);
+            Die();
         }
     }
 

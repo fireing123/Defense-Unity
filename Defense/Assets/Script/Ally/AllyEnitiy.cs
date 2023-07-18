@@ -17,6 +17,10 @@ namespace AllyEntity
 
         public GameObject isfocus;
 
+        private void Awake()
+        {
+            id = ObjectManger.GenerateUniqueId();
+        }
 
         private void OnTriggerStay(Collider other)
         {

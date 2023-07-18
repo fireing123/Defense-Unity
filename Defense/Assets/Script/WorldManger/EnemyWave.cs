@@ -1,5 +1,5 @@
 using Prefab;
-
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,23 +7,15 @@ using UnityEngine;
 
 namespace EnemyEntity
 {
-    public class EnemyWave : PrefabManger<WavesData>, IEnemySpawner, ISpawnWave
+    public class EnemyWave : PrefabManger<WavesData>
     {
 
-        public bool isWaving;
-        public string waveName;
-        private int waveid=-1;
-        public Dictionary<string, string[]> enemyWaves = new();
+        public static bool isWaving;
+        public static string waveName;
+        private static int waveid=-1;
+        public static Dictionary<string, string[]> enemyWaves = new();
 
-        public EnemyPrefabManager EnemyPrefabManager;
-
-        void Awake()
-        {
-            TryGetComponent(out EnemyPrefabManager);
-            LoadEnemyWaves();
-        }
-
-        public bool UpdateWave()
+        public static bool UpdateWave()
         {
             var list = new List<string>(enemyWaves.Keys);
             if (list.Count <= waveid + 1)
@@ -36,7 +28,7 @@ namespace EnemyEntity
             }
         }
 
-        public async void SpawnWave(Transform father ,Vector3 position, float waitSec)
+        public static async void SpawnWave(Transform father ,Vector3 position, float waitSec)
         {
             if (!enemyWaves.TryGetValue(waveName, out string[] wave))
             {
@@ -55,17 +47,19 @@ namespace EnemyEntity
 
         }
 
-        public GameObject SpawnEnemy(string _enemyName) => EnemyPrefabManager.GetPrefab(_enemyName);
+        public static GameObject SpawnEnemy(string _enemyName) => EnemyPrefabManager.GetPrefab(_enemyName);
 
 
-        public void LoadEnemyWaves()
+        public static void LoadEnemyWaves(TextAsset JsonText)
         {
-            WavesData waves = LoadPrefab();
+            WavesData waves = LoadPrefab(JsonText.text);
             
             foreach (Wavesinfo wave in waves.level)
             {
                 enemyWaves.Add(wave.name, wave.enemys);
             }
         }
+
+
     }
 }

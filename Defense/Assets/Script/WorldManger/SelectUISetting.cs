@@ -4,49 +4,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class SelectUISetting : PrefabManger<AllySelectData>
 {
-    public GameObject SelectList;
-    public GameObject SelectButtonPrefab;
-    public CreateTower createTower;
-    private void Awake()
-    {
-        LoadAllyButtonPrefabs();
-    }
+    public static GameObject SelectList;
+    public static GameObject SelectButtonPrefab;
 
-    private void Start()
-    {
-        
-    }
 
-    public void LoadAllyButtonPrefabs()
+    public static void LoadAllyButtonPrefabs(TextAsset JsonText ,GameObject _SelectList, GameObject _SelectButtonPrefab)
     {
-        AllySelectData allyData = LoadPrefab();
+        SelectList = _SelectList;
+        SelectButtonPrefab = _SelectButtonPrefab;
+        AllySelectData allyData = LoadPrefab(JsonText.text);
         foreach (AllySelectInfo item in allyData.allys)
         {
             GameObject _object = InsertButton();
-            _object.TryGetComponent(out Image image);
-            _object.TryGetComponent(out Button button);
+            Debug.Log(_object.name);
+            _object.transform.GetChild(0).TryGetComponent(out UnityEngine.UI.Image image);
+            _object.TryGetComponent(out UnityEngine.UI.Button button);
             image.sprite = Loads<Sprite>(item.photo);
             button.onClick.AddListener(delegate()  {
-                createTower.SetBuildClick(Loads<GameObject>(item.objectPath)); 
+                CreateTower.SetBuildClick(Loads<GameObject>(item.objectPath)); 
             });
         }
     }
 
-    private T Loads<T>(string path) where T : Object
+    private static T Loads<T>(string path) where T : Object
     {
         if (path == null) throw new System.NullReferenceException(path + " is null");
-        T t= Resources.Load<T>(path);
-        if (t == null) throw new System.NullReferenceException(path + " this Path is not "+ typeof(T) +" Path");
+        T t= Resources.Load<T>(path) ?? throw new System.NullReferenceException(path + " this Path is not "+ typeof(T) +" Path");
         return t;
     }
 
-    private GameObject InsertButton()
+    private static GameObject InsertButton()
     {
-        GameObject select = Instantiate(SelectButtonPrefab);
-        select.transform.SetParent(transform, false);
+        GameObject select = Instantiate(SelectButtonPrefab, SelectList.transform);
         return select;
     }
 }

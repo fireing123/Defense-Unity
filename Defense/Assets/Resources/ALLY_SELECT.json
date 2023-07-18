@@ -2,8 +2,8 @@
     "allys": [
         {
             "name" :"Turret Tower",
-            "photo":"",
-            "objectPath":""
+            "photo":"AllyPNG/TURRET_TOWER",
+            "objectPath":"Prefabs/Ally/Turret Tower Variant"
         }
     ]
 }

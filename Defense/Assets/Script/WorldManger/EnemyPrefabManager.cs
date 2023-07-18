@@ -6,20 +6,15 @@ using UnityEngine.UIElements;
 
 namespace EnemyEntity
 {
-
+    [System.Serializable]
     public class EnemyPrefabManager : PrefabManger<EnemyPrefabData>
     {
 
-        private Dictionary<string, GameObject> enemyPrefabs;
+        private static Dictionary<string, GameObject> enemyPrefabs;
 
-        private void Awake()
+        public static void LoadEnemyPrefabs(TextAsset JsonText)
         {
-            LoadEnemyPrefabs();
-        }
-
-        private void LoadEnemyPrefabs()
-        {
-            EnemyPrefabData prefabData = LoadPrefab();
+            EnemyPrefabData prefabData = LoadPrefab(JsonText.text);
 
             enemyPrefabs = new Dictionary<string, GameObject>();
 
@@ -37,10 +32,9 @@ namespace EnemyEntity
 
         
 
-        public GameObject GetPrefab(string _name)
+        public static GameObject GetPrefab(string _name)
         {
             bool _isHas = enemyPrefabs.TryGetValue(_name, out GameObject prefab);
-
             if (_isHas)
             {
                 return Instantiate(prefab);

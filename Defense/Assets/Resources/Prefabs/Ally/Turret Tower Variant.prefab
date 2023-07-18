@@ -104,7 +104,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 300
-  attackPower: 5
+  physicalAttackPower: 5
+  magicAttackPower: 1
   id: 0
+  Price: 0
   animator: {fileID: 0}
   isfocus: {fileID: 0}
