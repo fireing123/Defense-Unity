@@ -1,3 +1,4 @@
+using EnemyEntity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ public class PlayerControl : MonoBehaviour
     {
         EventsManger.GoldEvent.AddListener(ChangeGoldUI);
         EventsManger.SelectEvent.AddListener(SetSelect);
-
+        EventsManger.EnemyDeathEvent.AddListener(EnemyCompensation);
         SetAccount(account);
     }
 
@@ -42,7 +43,12 @@ public class PlayerControl : MonoBehaviour
         vector += Jump(jumpPow);
         transform.Translate(vector);
     }
-    
+
+    public void EnemyCompensation(LivingEnemy enemy)
+    {
+        PlusGold(enemy.compensation);
+    }
+
     public void ChangeGoldUI(int gold)
     {
         goldUi.text = "Gold : " + gold.ToString();
@@ -80,6 +86,8 @@ public class PlayerControl : MonoBehaviour
         
         mouseX += Input.GetAxis("Mouse X") * camaraRotation; //마우스 좌우움직임을 입력받아서 카메라의 Y축을 회전시킨다
         mouseY += Input.GetAxis("Mouse Y") * camaraRotation;
+        if (mouseY < -27) mouseY = -27;
+        else if (mouseY > 27) mouseY = 27;
         X.eulerAngles = new(mouseY, X.eulerAngles.y, X.eulerAngles.z);
         transform.eulerAngles = new(0, mouseX, 0);
     }

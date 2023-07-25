@@ -7,6 +7,10 @@
         {
             "name": "Slime",
             "prefabPath": "Prefabs/Enemy/Slime Variant"
+        },
+        {
+            "name": "Dragon",
+            "prefabPath": "Prefabs/Enemy/Dragon Variant"
         }
     ]
 }

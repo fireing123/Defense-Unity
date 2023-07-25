@@ -1,6 +1,7 @@
 
 using EnemyEntity;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AllyEntity
@@ -31,23 +32,17 @@ namespace AllyEntity
                 isfocus = other.gameObject;
             }
 
-            try
-            {
-                if (other.TryGetComponent(out LivingEnemy enemy)) throw new Exception("This enemy undefined LivingEnemy component");
+            if (!other.TryGetComponent(out LivingEnemy enemy)) throw new Exception("This enemy undefined LivingEnemy component");
 
-                if (enemy?.coodown[id] == null)
-                {
-                    enemy.coodown.Add(cooldown);
-                }
-                else if (enemy.coodown[id] <= 0 && isfocus == other.gameObject)
-                {
-                    Attack(enemy);
-                }
-            }
-            catch (Exception e)
+            if (!IsInRange(enemy.coodown, id))
             {
-                Debug.LogException(e);
+                enemy.coodown.Add(cooldown);
             }
+            else if (enemy.coodown[id] <= 0 && isfocus == other.gameObject)
+            {
+                Attack(enemy);
+            }
+
             var tr = GetComponentsInChildren<Transform>()[1];
             tr.rotation = LookAt(other.transform.position - tr.position);
         }
@@ -64,9 +59,13 @@ namespace AllyEntity
             if (other.gameObject == isfocus)
             {
                 isfocus = null;
-
             }
 
+        }
+
+        public bool IsInRange(List<ushort> list, int index)
+        {
+            try { _ = list[index]; return true; } catch { return false; }
         }
 
         public Quaternion LookAt(Vector3 direction)

@@ -95,7 +95,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &363322045
+--- !u!114 &104026317782070848
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,19 +104,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2909582125437489822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 048db1048c23c874ab4726cb3276dc13, type: 3}
+  m_Script: {fileID: 11500000, guid: 660bf32234c33af498cb7633cb1026e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2967899580770173296}
+  animator: {fileID: 0}
   nextDirection: {x: 0, y: 0, z: 0}
-  HP: 20
-  speed: 3
+  prev: {x: 0, y: 0, z: 0}
+  MAX_HP: 200
+  HP: 200
+  speed: 10
   attackPower: 5
-  attackTime: 0
+  attackTime: 1
+  height: 0.8
+  physicalDefense: 10
+  magicDefense: 10
+  compensation: 5
   move: 0
-  coodown: 0
---- !u!95 &2967899580770173296 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95471671811264702, guid: a817c29ea6847604bb2c6c51d9a74bf1, type: 3}
-  m_PrefabInstance: {fileID: 2910229207176581582}
-  m_PrefabAsset: {fileID: 0}
+  coodown: 

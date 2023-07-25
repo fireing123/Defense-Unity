@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class SelectUISetting : PrefabManger<AllySelectData>
 {
@@ -21,8 +20,8 @@ public class SelectUISetting : PrefabManger<AllySelectData>
         {
             GameObject _object = InsertButton();
             Debug.Log(_object.name);
-            _object.transform.GetChild(0).TryGetComponent(out UnityEngine.UI.Image image);
-            _object.TryGetComponent(out UnityEngine.UI.Button button);
+            _object.transform.GetChild(0).TryGetComponent(out Image image);
+            _object.TryGetComponent(out Button button);
             image.sprite = Loads<Sprite>(item.photo);
             button.onClick.AddListener(delegate()  {
                 CreateTower.SetBuildClick(Loads<GameObject>(item.objectPath)); 

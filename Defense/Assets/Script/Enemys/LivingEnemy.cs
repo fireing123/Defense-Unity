@@ -15,29 +15,36 @@ namespace EnemyEntity
         public Vector3 prev;
 
         [Header("Enemy Status")]
-        public int HP;
-        public byte speed;
-        public byte attackPower;
-        public byte attackTime;
-        
+        public int MAX_HP = 200;
+        public int HP = 200;
+        public byte speed = 10;
+        public byte attackPower = 5;
+        public byte attackTime = 1;
+        public float height = 0.8f;
 
         [Space(5)]
-
-        public byte defense;
-        public byte physicalDefense;
-        public byte magicDefense;
+        public byte physicalDefense = 10;
+        public byte magicDefense = 10;
 
         [Space(3)]
-
+        public byte compensation;
         public bool move;
         public List<ushort> coodown = new();
 
+        public HPBAR hpbar;
+
+        private void Start()
+        {
+            TryGetComponent(out animator);
+            hpbar = new HPBAR(gameObject.name);
+        }
 
         public virtual void FixedUpdate()
         {
             if (move) MoveLoad();
             TimeCooldwon();
             if (!IsLiving()) Die();
+            hpbar.TransformTrans(transform.position, height);
         }
 
         public void OnTriggerEnter(Collider other)
@@ -68,8 +75,10 @@ namespace EnemyEntity
 
         public void attacked(byte phyPower, byte magPower)
         {
-            HP -= phyPower / physicalDefense;
-            HP -= magPower / magicDefense;
+            int power = phyPower / physicalDefense + magPower / magicDefense;
+            if (power < HP) HP -= power;
+            else HP = 0;
+            hpbar.SetHP((float)HP / MAX_HP);
         }
 
         public void SetCooldown(ushort _cooldown, byte id)
@@ -79,8 +88,9 @@ namespace EnemyEntity
 
         void Die()
         {
-            EventsManger.EnemyDeath.Invoke();
             Destroy(gameObject);
+            Destroy(hpbar.Bar);
+            EventsManger.EnemyDeathEvent.Invoke(this);
         }
 
         bool IsLiving()

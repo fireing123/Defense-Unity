@@ -47,6 +47,8 @@ namespace EnemyEntity
 
         }
 
+        
+
         public static GameObject SpawnEnemy(string _enemyName) => EnemyPrefabManager.GetPrefab(_enemyName);
 
 

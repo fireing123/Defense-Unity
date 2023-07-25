@@ -89,8 +89,29 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 71.9, y: 1, z: 50.4}
+  m_Size: {x: 71.9, y: 10, z: 50.4}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &6920516709818734391
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3120732246051417487}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: eece6c7b0fef3a74cacd7b1169d86d3b, type: 3}
+  m_Controller: {fileID: 9100000, guid: 66daacd17f3a0bc49b1d844b4298cb0b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1171269908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,5 +129,5 @@ MonoBehaviour:
   magicAttackPower: 1
   id: 0
   Price: 0
-  animator: {fileID: 0}
+  animator: {fileID: 6920516709818734391}
   isfocus: {fileID: 0}
