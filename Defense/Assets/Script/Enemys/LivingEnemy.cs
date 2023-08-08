@@ -8,7 +8,7 @@ using Load;
 
 namespace EnemyEntity
 {
-    public class LivingEnemy : MonoBehaviour, IEnemyActions
+    public class LivingEnemy : MonoBehaviour
     {
         public Animator animator;
         public Vector3 nextDirection;
@@ -75,10 +75,15 @@ namespace EnemyEntity
 
         public void attacked(byte phyPower, byte magPower)
         {
-            int power = phyPower / physicalDefense + magPower / magicDefense;
+            int power = DamgeCalculate(phyPower, physicalDefense) + DamgeCalculate(magPower, magicDefense);
             if (power < HP) HP -= power;
             else HP = 0;
             hpbar.SetHP((float)HP / MAX_HP);
+        }
+
+        public int DamgeCalculate(byte Damge, byte Defense)
+        {
+            return Damge * 100 / (100 + Defense);
         }
 
         public void SetCooldown(ushort _cooldown, byte id)

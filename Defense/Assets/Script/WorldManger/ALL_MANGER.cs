@@ -19,6 +19,8 @@ public class ALL_MANGER : MonoBehaviour
     public GameObject HPBarPrefabs;
     private void Awake()
     {
+        EventsManger.SuccessEvent.AddListener(SetWorldStaticEmpty);
+        EventsManger.FailEvent.AddListener(SetWorldStaticEmpty);
         EnemyPrefabManager.LoadEnemyPrefabs(EnemyPrefabs);
         EnemyWave.LoadEnemyWaves(EnemyWaves);
         UIManger.SetCanves(Canves, HPBarPrefabs);
@@ -32,5 +34,11 @@ public class ALL_MANGER : MonoBehaviour
             ButtonPerant,
             ButtonPrefab
             );
+    }
+
+    public void SetWorldStaticEmpty()
+    {
+        EnemyWave.StaticEmpty();
+        ObjectManger.IDEmpty();
     }
 }

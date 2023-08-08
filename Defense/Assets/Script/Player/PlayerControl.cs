@@ -85,7 +85,7 @@ public class PlayerControl : MonoBehaviour
     {
         
         mouseX += Input.GetAxis("Mouse X") * camaraRotation; //마우스 좌우움직임을 입력받아서 카메라의 Y축을 회전시킨다
-        mouseY += Input.GetAxis("Mouse Y") * camaraRotation;
+        mouseY += Input.GetAxis("Mouse Y") * -camaraRotation;
         if (mouseY < -27) mouseY = -27;
         else if (mouseY > 27) mouseY = 27;
         X.eulerAngles = new(mouseY, X.eulerAngles.y, X.eulerAngles.z);

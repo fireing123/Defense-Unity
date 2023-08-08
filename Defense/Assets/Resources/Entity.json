@@ -11,6 +11,10 @@
         {
             "name": "Dragon",
             "prefabPath": "Prefabs/Enemy/Dragon Variant"
+        },
+        {
+            "name": "TurlteShell",
+            "prefabPath": "Prefabs/Enemy/TurtleShell Variant"
         }
     ]
 }

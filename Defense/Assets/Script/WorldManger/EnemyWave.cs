@@ -15,6 +15,14 @@ namespace EnemyEntity
         private static int waveid=-1;
         public static Dictionary<string, string[]> enemyWaves = new();
 
+        public static void StaticEmpty()
+        {
+            isWaving = false;
+            waveName = string.Empty;
+            waveid = 0;
+            enemyWaves = null;
+        }
+
         public static bool UpdateWave()
         {
             var list = new List<string>(enemyWaves.Keys);
